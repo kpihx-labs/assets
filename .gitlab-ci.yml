@@ -1,0 +1,30 @@
+# KpihX Labs - Assets Hub CI/CD
+# Syncs GitLab Source of Truth to GitHub Mirror
+
+stages:
+  - sync
+
+github_sync:
+  stage: sync
+  tags:
+    - pve
+  variables:
+    GITHUB_ORG: "kpihx-labs"
+    REPO_NAME: "assets"
+  only:
+    - main
+  script:
+    - "echo '🚀 Syncing Assets to GitHub Mirror...'"
+    
+    # Configure Git
+    - "git config --global user.email 'ci@kpihx-labs.com'"
+    - "git config --global user.name 'GitLab CI'"
+    
+    # Sync to GitHub
+    - "git remote remove github || true"
+    - "git remote add github https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_ORG}/${REPO_NAME}.git"
+    
+    # Push main source
+    - "git push github main --force"
+    
+    - "echo '✅ Sync complete.'"
