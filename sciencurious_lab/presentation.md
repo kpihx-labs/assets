@@ -15,35 +15,61 @@ Cette synergie permet de simuler un **tuteur personnel** pour chaque étudiant, 
 ## 🌍 Pourquoi ScienCurious ?
 Le projet est né d'un constat alarmant sur le **décrochage scolaire**, tant au **Cameroun** qu'en **France** (observé lors de mon stage aux Apprentis d'Auteuil). Le problème n'est pas le manque de volonté des jeunes, mais le format traditionnel de l'éducation qui peine à capter l'intérêt et à s'adapter aux rythmes individuels. ScienCurious utilise la puissance du visuel et de l'interactivité pour ré-engager ces profils.
 
-## 🏗️ Architecture Technique (Souveraineté Totale)
-Nous avons fait le choix de la **Souveraineté Radicale**. Pas d'Azure, pas d'AWS. Tout tourne sur notre propre infrastructure.
+## 🏗️ Architecture Technique (Souveraineté Radicale)
+
+Nous avons fait le choix de la **Souveraineté Totale**. Pas d'Azure, pas d'AWS. Tout tourne sur notre propre infrastructure.
 
 ```text
-    [ ÉCOSYSTÈME KPIHX-LABS ]
-    
-    Hardware: Mac Studio / Mac Mini (Cible : Inférence locale haute performance)
-    Software: Proxmox Hypervisor -> Docker-Host
-    
-    +-----------------------------------------------------------+
-    |  [ GESTIONNAIRE D'ASSETS ] <--- (Ce Hub)                  |
-    |       Exposition : assets.kpihx-labs.com                  |
-    |       Rôle : Servir les ressources pédagogiques générées  |
-    +-----------------------------------------------------------+
-    |  [ MOTEUR D'INFÉRENCE LOCAL ]                             |
-    |       Modèles : Qwen 2.5 (32B), Mistral Small             |
-    |       Avantage : Coût nul à l'usage, 100% Hors-ligne      |
-    +-----------------------------------------------------------+
-    |  [ PIPELINE DE DÉPLOIEMENT ]                              |
-    |       GitLab Runner -> Docker-Host -> Cloudflare Tunnel   |
-    +-----------------------------------------------------------+
+    _______________________________________________________________
+   |                                                               |
+   |               [ SOUVERAINETÉ KPIHX-LABS ]                     |
+   |_______________________________________________________________|
+   |                                                               |
+   |  HARDWARE  : Mac Studio (Inférence locale M2/M3)              |
+   |  KERNEL    : Proxmox Hypervisor | Debian | Docker-Host        |
+   |  NETWORK   : Cloudflare Tunnel (L7) | Traefik (Ingress)       |
+   |_______________________________________________________________|
+   |                                                               |
+   |  [ 📁 ASSETS HUB ] <-------------------- (Ce Répertoire)      |
+   |    URL : assets.kpihx-labs.com                                |
+   |    Rôle : Distribution CDN souveraine des cours & médias      |
+   |                                                               |
+   |  [ 🧠 LOCAL INFERENCE ENGINE ]                                |
+   |    Models : Qwen 2.5 (32B), Mistral Small                     |
+   |    Status : Local In-memory (No Cloud API dependence)         |
+   |                                                               |
+   |  [ ⚙️ CI/CD PIPELINE ]                                         |
+   |    Stack : GitLab Runner -> Docker Swarm -> Mirror GitHub     |
+   |_______________________________________________________________|
 ```
 
-### Flow de Données
+### Le Flux Opérationnel (Workflow)
+
 ```text
-(1) Teacher Input  --> (2) Local LLM Contextualization --> (3) Visual Code Gen (Manim)
-                                                                    |
-(5) Student Learning <-- (4) Assets Delivery (Assets Hub) <---------+
+       PROFESSEUR                          IA LOCALE (SOUVERAINE)
+      (Le Pilote)                       (Le Copilote de Forme)
+           |                                       |
+    [ DONNÉE BRUTE ] -----------------------> [ ANALYSE LLM ]
+    (Texte, Schéma)                           (Contextualisation)
+           |                                       |
+    [ CADRAGE PÉDA ]                          [ GÉNÉRATION CODE ]
+    (Objectifs, Ton)                          (Manim / Three.js)
+           |                                       |
+           v                                       v
+    [ VALIDATION ] <------------------------- [ RENDU VISUEL ]
+           |                                       |
+           +-----------------+---------------------+
+                             |
+                             v
+                    [ HUB D'ASSETS (CDN) ]
+                   (assets.kpihx-labs.com)
+                             |
+                  ___________|___________
+                 |           |           |
+             [ ÉLÈVE A ] [ ÉLÈVE B ] [ ÉLÈVE C ]
+             (Profil V)  (Profil K)  (Profil A)
 ```
+
 
 ## 🚀 État d'Avancement (POC)
 Actuellement au stade de **Preuve de Concept (POC)** :

@@ -1,7 +1,5 @@
-version: '3.8'
-
 services:
-  nginx:
+  assets:
     image: nginx:alpine
     container_name: kpihx-labs-assets
     restart: unless-stopped
@@ -9,13 +7,23 @@ services:
       - .:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.kpihx-labs-assets.rule=Host(`assets.kpihx-labs.com`) || Host(`assets.pve`)"
-      - "traefik.http.routers.kpihx-labs-assets.entrypoints=websecure"
-      - "traefik.http.routers.kpihx-labs-assets.tls=true"
-      - "traefik.http.services.kpihx-labs-assets.loadbalancer.server.port=80"
+
+      # --- Accès hybride (Interne .homelab + Public .com) ---
+      - "traefik.http.routers.assets.rule=Host(`assets.homelab`) || Host(`assets.kpihx-labs.com`)"
+      - "traefik.http.routers.assets.entrypoints=websecure"
+      - "traefik.http.routers.assets.tls=true"
+      
+      # --- Middlewares ---
+      # On garde le mot de passe Traefik par défaut (Double Sécu)
+      # - "traefik.http.routers.assets.middlewares=auth"
+
+      # --- Service ---
+      - "traefik.http.routers.assets.service=assets"
+      - "traefik.http.services.assets.loadbalancer.server.port=80"
+
     networks:
-      - cloudflare-tunnel
+      - proxy
 
 networks:
-  cloudflare-tunnel:
+  proxy:
     external: true
