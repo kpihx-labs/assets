@@ -7,8 +7,8 @@ Bienvenue dans l'espace dédié au projet **ScienCurious Lab**. Ce projet vise �
 ## 📂 Ressources
 
 - **[Présentation Détaillée](presentation.md)** : Vision, architecture et roadmap.
-- **[Logo Officiel](logo.png)** : L'identité visuelle du projet.
-- **[Concept Visuel](visual.png)** : Aperçu de l'interface utilisateur (Figma-style).
+- **[Logo Officiel](logo.png)** ([Lien Direct](/sciencurious/logo))
+- **[Concept Visuel](visual.png)** ([Lien Direct](/sciencurious/visual))
 
 ---
 *Propulsé par KpihX-Labs Assets Hub*

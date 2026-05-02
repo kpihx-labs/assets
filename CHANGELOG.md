@@ -2,6 +2,12 @@
 
 Toutes les modifications notables apportées au **Assets Hub** seront consignées ici.
 
+## [v1.1.0] - 2026-05-02
+### Added
+- Intégration du Concept Visuel Figma-style à `/sciencurious/visual`.
+- Optimisation du routage Nginx (Regex) pour l'accès direct aux images.
+- Stabilisation des liens symboliques avec `k-context`.
+
 ## [v1.0.0] - 2026-05-02
 ### Added
 - Initialisation du hub avec Docsify.
