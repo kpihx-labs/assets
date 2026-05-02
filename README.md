@@ -2,48 +2,22 @@
 
 > **Sovereign Infrastructure · Visual Education · Radical Transparency**
 
-Le **Assets Hub** est le centre névralgique de distribution des ressources numériques de KpihX-Labs. Il sert de CDN souverain pour nos projets, garantissant une indépendance totale vis-à-vis des tiers technologiques.
+Le **Assets Hub** est le centre de distribution souverain des ressources numériques de KpihX-Labs. Ce hub centralise les assets de tous nos projets actuels et futurs.
 
 ---
 
-## 🧪 Featured Project: ScienCurious Lab
+## 📂 Projets Actifs
 
-![ScienCurious Logo](/sciencurious/logo)
-
-*L'IA éducative souveraine sous le contrôle des enseignants.*
-
-- **[Lire la Présentation Complète](sciencurious_lab/presentation.md)**
-- **[Lien Direct Asset (CDN)](/sciencurious/logo)**
-
----
-
-## 🚀 Navigation Rapide
-
-| Domaine | Description | Accès |
-| :--- | :--- | :--- |
-| **🌌 Visuals** | Moteur de rendu 3D temps réel (Three.js). | [Lancer l'Expérience](visual/index.md) |
-| **🏷️ Brand** | Identité visuelle, logos et chartes. | [Explorer le Kit](brand/README.md) |
-| **🏗️ Infra** | Architecture réseau et pipelines CI/CD. | [Détails Techniques](infra/README.md) |
+### 🧪 [ScienCurious Lab](sciencurious_lab/README.md)
+*IA éducative visuelle et souveraine sous le contrôle des enseignants.*
+- [Logo](sciencurious_lab/logo.png)
+- [Présentation](sciencurious_lab/presentation.md)
+- [Visual](sciencurious_lab/visual.png)
 
 ---
 
-## 🏗️ Architecture Souveraine
-
-Ce hub n'est pas un simple site web, c'est une pièce de notre **Personal OS**.
-
-```text
-    [ VISITEUR ] 
-         |
-    ( Cloudflare Tunnel )  <-- Exposition Sécurisée
-         |
-    [ TRAEFIK ]            <-- Ingress & Routing
-         |
-    [ ASSETS HUB ]         <-- Nginx + Docsify (Local Storage)
-```
-
-### Pourquoi la Souveraineté ?
-Dans le cadre du projet **Bertrand Pivin**, ce hub démontre qu'il est possible de construire un écosystème éducatif complet (IA, Visuels, Documentation) sur du matériel modeste (mini-PC), sans dépendre d'AWS, Google ou Azure. **Le savoir reste local, le contrôle est absolu.**
+## 🏗️ Philosophie
+Tous les assets servis ici sont auto-hébergés sur notre infrastructure **Homelab**. Nous garantissons l'intégrité et la disponibilité de nos ressources sans dépendance aux CDNs tiers.
 
 ---
 *Propulsé par KpihX-Labs — Vers une souveraineté numérique absolue.*
-
